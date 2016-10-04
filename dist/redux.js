@@ -20595,6 +20595,7 @@ var increaseBrightness = exports.increaseBrightness = function increaseBrightnes
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.Dimmer = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -20618,7 +20619,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Dimmer = function (_React$Component) {
+var Dimmer = exports.Dimmer = function (_React$Component) {
   _inherits(Dimmer, _React$Component);
 
   function Dimmer() {
@@ -20643,35 +20644,35 @@ var Dimmer = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'dimmer' },
-        _react2.default.createElement('div', { className: 'lightbulb', style: style }),
         _react2.default.createElement(
           'div',
-          { className: 'container' },
+          { className: 'lightbulb', style: style },
+          power ? _react2.default.createElement(
+            'h1',
+            null,
+            brightness
+          ) : ''
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'controls' },
           _react2.default.createElement(
             'div',
-            { className: 'row' },
+            { className: 'btn-group' },
             _react2.default.createElement(
-              'div',
-              { className: 'col-md-12 text-center' },
-              _react2.default.createElement(
-                'div',
-                { className: 'btn-group' },
-                _react2.default.createElement(
-                  'button',
-                  { className: 'btn btn-default', disabled: !power, onClick: this._handleDecreaseBrightness.bind(this) },
-                  '-'
-                ),
-                _react2.default.createElement(
-                  'button',
-                  { className: 'btn btn-default', onClick: this._handleTogglePower.bind(this) },
-                  power ? 'Power Off' : 'Power On'
-                ),
-                _react2.default.createElement(
-                  'button',
-                  { className: 'btn btn-default', disabled: !power, onClick: this._handleIncreaseBrightness.bind(this) },
-                  '+'
-                )
-              )
+              'button',
+              { className: 'btn btn-lg btn-danger', disabled: !power || brightness == 0, onClick: this._handleDecreaseBrightness.bind(this) },
+              '-'
+            ),
+            _react2.default.createElement(
+              'button',
+              { className: 'btn btn-lg btn-default', onClick: this._handleTogglePower.bind(this) },
+              power ? 'Power Off' : 'Power On'
+            ),
+            _react2.default.createElement(
+              'button',
+              { className: 'btn btn-lg btn-danger', disabled: !power || brightness == 100, onClick: this._handleIncreaseBrightness.bind(this) },
+              '+'
             )
           )
         )
@@ -20696,6 +20697,16 @@ var Dimmer = function (_React$Component) {
 
   return Dimmer;
 }(_react2.default.Component);
+
+Dimmer.propTypes = {
+  power: _react2.default.PropTypes.bool.isRequired,
+  brightness: _react2.default.PropTypes.number.isRequired
+};
+Dimmer.defaultProps = {
+  power: false,
+  brightness: 100
+};
+
 
 var mapStateToProps = function mapStateToProps(state, props) {
   return {
@@ -20729,7 +20740,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var INITIAL_STATE = {
   power: false,
-  brightness: 0
+  brightness: 100
 };
 
 var reducer = function reducer() {

@@ -1,6 +1,16 @@
 .lightbulb {
   height: calc(100vh - 100px);
+  display: flex;
 }
-.col-md-12 {
-  padding: 30px 0;
+.lightbulb h1 {
+  margin: auto;
+  font-size: 150px;
+  color: #FFF;
+}
+.controls {
+  height: 100px;
+  display: flex;
+}
+.controls .btn-group {
+  margin: auto;
 }

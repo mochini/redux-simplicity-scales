@@ -7,7 +7,7 @@ class Dimmer extends React.Component {
     super(props)
     this.state = {
       power: false,
-      brightness: 0
+      brightness: 100
     }
   }
 
@@ -22,33 +22,30 @@ class Dimmer extends React.Component {
     return (
       <div className="dimmer">
 
-        <div className="lightbulb" style={style}></div>
+        <div className="lightbulb" style={style}>
 
-        <div className="container">
+          {(power) ? <h1>{brightness}</h1> : '' }
 
-          <div className="row">
+        </div>
 
-            <div className="col-md-12 text-center">
+        <div className="controls">
 
-              <div className="btn-group">
+          <div className="btn-group">
 
-                <button className="btn btn-default" disabled={!power} onClick={this._handleDecreaseBrightness.bind(this)}>-</button>
+            <button className="btn btn-lg btn-danger" disabled={!power || brightness == 0} onClick={this._handleDecreaseBrightness.bind(this)}>-</button>
 
-                <button className="btn btn-default" onClick={this._handleTogglePower.bind(this)}>
-                  { (power) ? 'Power Off' : 'Power On' }
-                </button>
+            <button className="btn btn-lg btn-default" onClick={this._handleTogglePower.bind(this)}>
+              { (power) ? 'Power Off' : 'Power On' }
+            </button>
 
-                <button className="btn btn-default" disabled={!power} onClick={this._handleIncreaseBrightness.bind(this)}>+</button>
-
-              </div>
-
-            </div>
+            <button className="btn btn-lg btn-danger" disabled={!power || brightness == 100} onClick={this._handleIncreaseBrightness.bind(this)}>+</button>
 
           </div>
 
         </div>
 
       </div>
+
     )
   }
 

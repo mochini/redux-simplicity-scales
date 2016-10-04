@@ -18846,7 +18846,7 @@ var Dimmer = function (_React$Component) {
 
     _this.state = {
       power: false,
-      brightness: 0
+      brightness: 100
     };
     return _this;
   }
@@ -18867,35 +18867,35 @@ var Dimmer = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'dimmer' },
-        _react2.default.createElement('div', { className: 'lightbulb', style: style }),
         _react2.default.createElement(
           'div',
-          { className: 'container' },
+          { className: 'lightbulb', style: style },
+          power ? _react2.default.createElement(
+            'h1',
+            null,
+            brightness
+          ) : ''
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'controls' },
           _react2.default.createElement(
             'div',
-            { className: 'row' },
+            { className: 'btn-group' },
             _react2.default.createElement(
-              'div',
-              { className: 'col-md-12 text-center' },
-              _react2.default.createElement(
-                'div',
-                { className: 'btn-group' },
-                _react2.default.createElement(
-                  'button',
-                  { className: 'btn btn-default', disabled: !power, onClick: this._handleDecreaseBrightness.bind(this) },
-                  '-'
-                ),
-                _react2.default.createElement(
-                  'button',
-                  { className: 'btn btn-default', onClick: this._handleTogglePower.bind(this) },
-                  power ? 'Power Off' : 'Power On'
-                ),
-                _react2.default.createElement(
-                  'button',
-                  { className: 'btn btn-default', disabled: !power, onClick: this._handleIncreaseBrightness.bind(this) },
-                  '+'
-                )
-              )
+              'button',
+              { className: 'btn btn-lg btn-danger', disabled: !power || brightness == 0, onClick: this._handleDecreaseBrightness.bind(this) },
+              '-'
+            ),
+            _react2.default.createElement(
+              'button',
+              { className: 'btn btn-lg btn-default', onClick: this._handleTogglePower.bind(this) },
+              power ? 'Power Off' : 'Power On'
+            ),
+            _react2.default.createElement(
+              'button',
+              { className: 'btn btn-lg btn-danger', disabled: !power || brightness == 100, onClick: this._handleIncreaseBrightness.bind(this) },
+              '+'
             )
           )
         )

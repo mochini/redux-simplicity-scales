@@ -2,7 +2,7 @@ import * as actionTypes from './action_types'
 
 const INITIAL_STATE = {
   power: false,
-  brightness: 0
+  brightness: 100
 }
 
 const reducer = (state = INITIAL_STATE, action) => {

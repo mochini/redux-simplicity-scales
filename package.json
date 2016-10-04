@@ -28,11 +28,12 @@
     "browserify": "^11.2.0",
     "browserify-incremental": "^3.1.1",
     "bulkify": "^1.1.1",
-    "envify": "^3.4.0",
+    "enzyme": "^2.4.1",
     "flow-bin": "^0.30.0",
+    "jasmine-enzyme": "^1.2.0",
     "jest-cli": "^14.0.1",
-    "babel-jest": "^14.0.2",
-    "babel-polyfill": "^6.9.1"
+    "react-addons-test-utils": "^15.3.2",
+    "sinon": "^1.17.6"
   },
   "scripts": {
     "plain": "rm ./dist/plain.js && browserify -t [ babelify --presets [ es2015 react ] --plugins [ transform-class-properties transform-object-rest-spread] ] ./src/plain >> ./dist/plain.js",
