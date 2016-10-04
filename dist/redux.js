@@ -20708,17 +20708,25 @@ Dimmer.defaultProps = {
 };
 
 
-var mapStateToProps = function mapStateToProps(state, props) {
+var mapStateToProps = function mapStateToProps(state) {
   return {
     power: state.power,
     brightness: state.brightness
   };
 };
 
-var mapDispatchToProps = {
-  onTogglePower: actions.togglePower,
-  onDecreaseBrightness: actions.decreaseBrightness,
-  onIncreaseBrightness: actions.increaseBrightness
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    onTogglePower: function onTogglePower() {
+      dispatch(actions.togglePower());
+    },
+    onDecreaseBrightness: function onDecreaseBrightness() {
+      dispatch(actions.decreaseBrightness());
+    },
+    onIncreaseBrightness: function onIncreaseBrightness() {
+      dispatch(actions.increaseBrightness());
+    }
+  };
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Dimmer);

@@ -66,15 +66,26 @@ export class Dimmer extends React.Component {
 
 }
 
-const mapStateToProps = (state, props) => ({
-  power: state.power,
-  brightness: state.brightness
-})
 
-const mapDispatchToProps = {
-  onTogglePower: actions.togglePower,
-  onDecreaseBrightness: actions.decreaseBrightness,
-  onIncreaseBrightness: actions.increaseBrightness
+const mapStateToProps = (state) => {
+  return {
+    power: state.power,
+    brightness: state.brightness
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onTogglePower: () => {
+      dispatch(actions.togglePower())
+    },
+    onDecreaseBrightness: () => {
+      dispatch(actions.decreaseBrightness())
+    },
+    onIncreaseBrightness: () => {
+      dispatch(actions.increaseBrightness())
+    }
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dimmer)
