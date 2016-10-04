@@ -14,7 +14,6 @@ export class Dimmer extends React.Component {
     brightness: 100
   }
 
-
   render() {
     const { power, brightness } = this.props
 
