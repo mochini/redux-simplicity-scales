@@ -1,0 +1,6 @@
+.lightbulb {
+  height: calc(100vh - 100px);
+}
+.col-md-12 {
+  padding: 30px 0;
+}
