@@ -66,7 +66,6 @@ export class Dimmer extends React.Component {
 
 }
 
-
 const mapStateToProps = (state) => {
   return {
     power: state.power,
